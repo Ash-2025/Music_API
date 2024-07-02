@@ -1,4 +1,4 @@
-const {getDb} = require("../config/mongo")
+const {getDb} = require("../../config/mongo")
 
 async function getAlbum(req,res){
     const album = req.params.album_name;

@@ -1,5 +1,5 @@
 
-const {getDb} = require("../config/mongo")
+const {getDb} = require("../../config/mongo")
 
 async function getArtistSongs(req, res){
 

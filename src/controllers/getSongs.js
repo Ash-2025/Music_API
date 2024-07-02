@@ -1,4 +1,4 @@
-const {getDb} = require("../config/mongo")
+const {getDb} = require("../../config/mongo")
 
 async function getSongByName(req,res){
     const song = req.params.song_name;
