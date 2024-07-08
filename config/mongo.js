@@ -20,8 +20,4 @@ async function getDb() {
     await connectToMongoDb();
     return client.db("music");
 }
-module.exports = {
-    connectToMongoDb,
-    getDb,
-    client
-}
+module.exports = {getDb}

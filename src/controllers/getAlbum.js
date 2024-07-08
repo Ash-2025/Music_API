@@ -1,8 +1,8 @@
 const {getDb} = require("../../config/mongo")
 
 async function getAlbum(req,res){
-    const album = req.params.album_name;
-
+    const albumname = req.params.album_name;
+    const album = albumname.replace(/-/g,' ');
     try {
         
         const db = await getDb();

@@ -11,16 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.44.2",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "generate-api-key": "^1.0.2",
     "mongodb": "^6.6.2",
-    "nodemon": "^3.1.0",
-    "postcss": "^8.4.39",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.4.4"
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.0"
   }
 }

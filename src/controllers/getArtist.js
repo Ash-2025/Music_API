@@ -3,7 +3,8 @@ const {getDb} = require("../../config/mongo")
 
 async function getArtistSongs(req, res){
 
-    const artistName = req.params.artist_name
+    const artist = req.params.artist_name;
+    const artistName = artist.replace(/-/g,' ');
     console.log(artistName);
     try {
         
@@ -15,6 +16,7 @@ async function getArtistSongs(req, res){
         const result = await collection.find(query).toArray();
 
         if(result.length > 0) {
+            // return res.json({'success':'200'});
             return res.json(result);
         }
         else{

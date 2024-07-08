@@ -1,8 +1,8 @@
 const {getDb} = require("../../config/mongo")
 
 async function getSongByName(req,res){
-    const song = req.params.song_name;
-
+    const songname = req.params.song_name;
+    const song = songname.replace(/-/g,' ');
     console.log(song);
     const db = await getDb();
     const collection = db.collection("musico");

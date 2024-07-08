@@ -1,43 +1,57 @@
 const express = require('express');
 const cookieParser = require('cookie-parser')
-const path = require('path');
 const app = express();
 
-
-// Set the view engine to EJS
-app.set('view engine', 'ejs');
-
-// Set the views directory (This is the correct path)
-app.set('views', path.join(__dirname, './src/views'))
-;
-// app.use(express.static(path.join(__dirname, 'util')));
-
-app.get("/" , (req,res)=>{
-    res.render('home');
+app.get("/info" , (req,res)=>{
+    res.json({
+        'Base ULR':'',
+        'route_artists':'/artists/:artist_name',
+        'route_song':'/songs/:song_name',
+        'route_album':'/album/:album_name',
+        'route_random':'/music',
+        'tip':'To use full name seprate it with -, for ex: ed sheeran becomes ed-sheeran',
+    });
 })
 
-// controllers import
-const getRandomSongs = require('./src/controllers/getRandom');
-
-//all of my router imports
-const artistRoute = require('./src/router/artist_route')
-const songRoute = require('./src/router/songRoute')
-const albumRoute = require("./src/router/albumRoute");
-
 //middleware to parse cookies
+//middleware to parse form and json data
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
 
 
+
+// controllers import
+const getRandomSongs = require('./src/controllers/getRandom');
 app.get("/music", getRandomSongs)
 
-// dynamic route for search by artists and song_name
-app.use("/artists", artistRoute)
-app.use("/songs",songRoute)
-app.use("/album", albumRoute)
+//all of my router imports
+const signIn = require('./src/router/signRoute');
+const artistRoute = require('./src/router/artist_route')
+const songRoute = require('./src/router/songRoute')
+const albumRoute = require("./src/router/albumRoute");
+const playlistRoute = require("./src/router/playlistRoute")
 
+
+//custom middleware imports
+const checkApi = require('./src/middleware/api_verify')
+
+
+// authentication routes
+app.use("/signIn" , signIn);
+
+
+// dynamic route for search by artists and song_name
+app.use("/:api_key/artist",checkApi, artistRoute)
+app.use("/:api_key/songs",checkApi,songRoute)
+app.use("/:api_key/album",checkApi, albumRoute)
+
+//playlist route
+app.use("/playlistfree",playlistRoute);
+app.use("/playlist",checkApi,playlistRoute);
 
 //listen to port
-app.listen(3001, () => console.log("Listening on port"));
+app.listen(3000, () => console.log("Listening on port"));
 
 
 
