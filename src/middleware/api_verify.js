@@ -4,9 +4,11 @@ async function checkApi(req, res, next) {
 
     try {
         const key = req.params.api_key;
+        console.log(key);
         const { data, error } = await supabase.from('user').select('api_key,limit').eq('api_key', key);
         
         console.log(data);
+        console.log(data.length);
         if (data.length==0 || error) {
             return res.status(404).json({
                 Message:'Api key not found'

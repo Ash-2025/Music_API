@@ -17,15 +17,19 @@ app.get('/',(req,res)=>{
 })
 app.get("/info" , (req,res)=>{
     res.json({
-        'signUp':'go to /signup route to get api key. api key will be sent to your email',
-        'Free routes':'/music | /playlistfree/:playlist_name',
         'Base ULR':'',
+
+        'signUp':'go to /signup route to get api key. api key will be sent to your email',
+
+        'Free routes':'/music | /playlistfree/:playlist_name',
+
         'route_artists':'/:api_key/artist/:artist_name',
         'route_song':'/:api_key/songs/:song_name',
         'route_album':'/:api_key/album/:album_name',
-        'route_playlist':'/playlist/:album_name/:api_key | (to access full playlist)',
+        'route_playlist':'/playlist/:playlist_name/:api_key | (to access full playlist)',
         'playlist available':'rap91 | bollywoodcentral | bollywoodmush | punjabi101',
         'imp':'Use only first name or last name',
+
     });
 })
 
@@ -59,7 +63,7 @@ app.use("/:api_key/album",checkApi, albumRoute)
 
 //playlist route
 app.use("/playlistfree",playlistRoute);
-app.use("/playlist",checkApi,playlistRoute);
+app.use("/playlist",playlistRoute);
 
 //listen to port
 app.listen(3000, () => console.log("Listening on port"));
