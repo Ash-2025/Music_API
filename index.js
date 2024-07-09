@@ -18,9 +18,9 @@ app.get('/',(req,res)=>{
 })
 app.get("/info" , (req,res)=>{
     res.json({
-        'Base ULR':'',
+        'Base URL':'https://musicapi-production-ef9e.up.railway.app',
 
-        'signUp':'go to /signup route to get api key. api key will be sent to your email',
+        'signIn':'go to /signIn route to get api key. api key will be sent to your email',
 
         'Free routes':'/music | /playlistfree/:playlist_name',
 
@@ -32,6 +32,7 @@ app.get("/info" , (req,res)=>{
         'imp':'Use only first name or last name for artist,albums and songs for now',
 
     });
+    
 })
 
 
