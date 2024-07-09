@@ -1,13 +1,14 @@
 const express = require('express');
 const cookieParser = require('cookie-parser')
 const app = express();
-
+const cors = require('cors')
 
 //middleware to parse cookies
 //middleware to parse form and json data
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
+app.use(cors())
 
 app.get('/',(req,res)=>{
     res.json({
