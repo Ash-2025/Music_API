@@ -2,6 +2,13 @@ const express = require('express');
 const cookieParser = require('cookie-parser')
 const app = express();
 
+
+//middleware to parse cookies
+//middleware to parse form and json data
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
+app.use(cookieParser())
+
 app.get('/',(req,res)=>{
     res.json({
         'home':'This is home route',
@@ -21,11 +28,6 @@ app.get("/info" , (req,res)=>{
     });
 })
 
-//middleware to parse cookies
-//middleware to parse form and json data
-app.use(express.json());
-app.use(express.urlencoded({extended:false}))
-app.use(cookieParser())
 
 
 
