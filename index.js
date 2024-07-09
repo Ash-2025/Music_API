@@ -28,7 +28,7 @@ app.get("/info" , (req,res)=>{
         'route_album':'/:api_key/album/:album_name',
         'route_playlist':'/playlist/:playlist_name/:api_key | (to access full playlist)',
         'playlist available':'rap91 | bollywoodcentral | bollywoodmush | punjabi101',
-        'imp':'Use only first name or last name',
+        'imp':'Use only first name or last name for artist,albums and songs for now',
 
     });
 })
