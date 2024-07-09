@@ -2,14 +2,22 @@ const express = require('express');
 const cookieParser = require('cookie-parser')
 const app = express();
 
+app.get('/',(req,res)=>{
+    res.json({
+        'home':'This is home route',
+        'go to':'/info route for more info'
+    })
+})
 app.get("/info" , (req,res)=>{
     res.json({
+        'Free routes':'/music | /playlistfree/:playlist_name',
         'Base ULR':'',
-        'route_artists':'/artists/:artist_name',
-        'route_song':'/songs/:song_name',
-        'route_album':'/album/:album_name',
-        'route_random':'/music',
-        'tip':'To use full name seprate it with -, for ex: ed sheeran becomes ed-sheeran',
+        'route_artists':'/:api_key/artist/:artist_name',
+        'route_song':'/:api_key/songs/:song_name',
+        'route_album':'/:api_key/album/:album_name',
+        'route_playlist':'/playlist/:album_name/:api_key | (to access full playlist)',
+        'playlist available':'rap91 | bollywoodcentral | bollywoodmush | punjabi101',
+        'imp':'Use only first name or last name',
     });
 })
 
