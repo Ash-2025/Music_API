@@ -17,6 +17,7 @@ app.get('/',(req,res)=>{
 })
 app.get("/info" , (req,res)=>{
     res.json({
+        'signUp':'go to /signup route to get api key. api key will be sent to your email',
         'Free routes':'/music | /playlistfree/:playlist_name',
         'Base ULR':'',
         'route_artists':'/:api_key/artist/:artist_name',
